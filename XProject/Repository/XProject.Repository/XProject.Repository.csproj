@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>C:\Users\longn\Desktop\OAZALO\OAZalo\XProject\Backup\Repository\XProject.Repository\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Cross\XProject.Core\XProject.Core.csproj" />
+    <ProjectReference Include="..\..\Cross\XProject.Mapper\XProject.Mapper.csproj" />
+    <ProjectReference Include="..\..\Service\XProject.Contract.Service\XProject.Contract.Service.csproj" />
+    <ProjectReference Include="..\..\Service\XProject.Service\XProject.Service.csproj" />
+    <ProjectReference Include="..\XProject.Contract.Repository\XProject.Contract.Repository.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>C:\Users\longn\Desktop\OAZALO\OAZalo\XProject\Backup\Service\XProject.Service\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="vng.zalo.ZaloDotNetSDK" Version="1.1.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Cross\XProject.Core\XProject.Core.csproj" />
+    <ProjectReference Include="..\..\Cross\XProject.Mapper\XProject.Mapper.csproj" />
+    <ProjectReference Include="..\..\Repository\XProject.Contract.Repository\XProject.Contract.Repository.csproj" />
+    <ProjectReference Include="..\XProject.Contract.Service\XProject.Contract.Service.csproj" />
+  </ItemGroup>
+</Project>
