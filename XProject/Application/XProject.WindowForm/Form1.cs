@@ -101,7 +101,15 @@ namespace XProject.WindowForm
             }
         }
 
-       
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         public async Task<string> CallAPIGet(string url)
         {
             try
@@ -294,9 +302,6 @@ namespace XProject.WindowForm
             }    
         }
 
-<<<<<<< Updated upstream
-        
-=======
         private void button7_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -336,6 +341,5 @@ namespace XProject.WindowForm
             }
 
         }
->>>>>>> Stashed changes
     }
 }
