@@ -183,7 +183,6 @@ namespace XProject.WindowForm
             var template_id = textBox6.Text;
             string url = "https://business.openapi.zalo.me/template/sample-data?template_id=" + template_id;
             _resp = await CallAPIGet(url);
-            
 
             var root = JToken.Parse(_resp);
             
