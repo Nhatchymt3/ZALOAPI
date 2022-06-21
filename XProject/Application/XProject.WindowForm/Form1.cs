@@ -100,15 +100,7 @@ namespace XProject.WindowForm
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
         public async Task<string> CallAPIGet(string url)
         {
             try
@@ -300,5 +292,7 @@ namespace XProject.WindowForm
                 }
             }    
         }
+
+        
     }
 }
