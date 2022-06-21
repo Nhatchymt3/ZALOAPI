@@ -57,6 +57,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+<<<<<<< Updated upstream
+=======
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+>>>>>>> Stashed changes
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +80,10 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
+<<<<<<< Updated upstream
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+>>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -356,6 +366,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.textBox7);
+            this.tabPage2.Controls.Add(this.button7);
+            this.tabPage2.Controls.Add(this.dataGridView4);
             this.tabPage2.Controls.Add(this.dataGridView3);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.textBox8);
@@ -373,6 +386,37 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+<<<<<<< Updated upstream
+=======
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(513, 25);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(240, 20);
+            this.textBox7.TabIndex = 11;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(675, 50);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(78, 23);
+            this.button7.TabIndex = 10;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(513, 79);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView4.TabIndex = 9;
+            // 
+>>>>>>> Stashed changes
             // dataGridView3
             // 
             this.dataGridView3.AllowUserToAddRows = false;
@@ -381,26 +425,40 @@
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Key,
             this.Value});
+<<<<<<< Updated upstream
             this.dataGridView3.Location = new System.Drawing.Point(321, 96);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.Size = new System.Drawing.Size(328, 185);
+=======
+            this.dataGridView3.Location = new System.Drawing.Point(241, 78);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(246, 150);
+>>>>>>> Stashed changes
             this.dataGridView3.TabIndex = 8;
             // 
             // Key
             // 
             this.Key.HeaderText = "Key";
+<<<<<<< Updated upstream
             this.Key.MinimumWidth = 6;
             this.Key.Name = "Key";
             this.Key.Width = 125;
+=======
+            this.Key.Name = "Key";
+>>>>>>> Stashed changes
             // 
             // Value
             // 
             this.Value.HeaderText = "Value";
+<<<<<<< Updated upstream
             this.Value.MinimumWidth = 6;
             this.Value.Name = "Value";
             this.Value.Width = 125;
+=======
+            this.Value.Name = "Value";
+>>>>>>> Stashed changes
             // 
             // button6
             // 
@@ -497,6 +555,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+<<<<<<< Updated upstream
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+>>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
@@ -530,6 +592,7 @@
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+<<<<<<< Updated upstream
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -544,6 +607,11 @@
         private System.Windows.Forms.TextBox txtUserGender;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtNotes;
+=======
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TextBox textBox7;
+>>>>>>> Stashed changes
     }
 }
 

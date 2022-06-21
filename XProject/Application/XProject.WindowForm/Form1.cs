@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CSVApp;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -215,30 +216,32 @@ namespace XProject.WindowForm
         {
             string url = "https://business.openapi.zalo.me/message/template";
             
-            var data = new TemplateData
+            string template_data="";
+            for (int rows = 0; rows < dataGridView3.Rows.Count; rows++)
             {
-                otp = "1"
-            };
+                    string key = dataGridView3.Rows[rows].Cells[0].Value.ToString();
+                    string value = dataGridView3.Rows[rows].Cells[1].Value.ToString();
+                     template_data = template_data+key + "\"" + ":"+"\""+value +  ",";
+            }
+            string template_dt =template_data.TrimEnd(',');
+
             Root3 rootData = new Root3
             {
                 //mode = "development",
                 phone = "84379921764",
                 template_id = textBox6.Text,
-                template_data = data
+                template_data = template_dt
 
             };
-            foreach (DataGridViewRow row in dataGridView3.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    string key = cell.Value.ToString();
-                    string value = cell.Value.ToString();
-                }
-            }
-
+       
             var content = JsonConvert.SerializeObject(rootData);
+            content = content + "}";
+            var a = content.LastIndexOf("template_data")+15;
+            var s = content.Insert(a,"{");
+            var z = s.Replace(@"\",@"");
+
             //var content = new FormUrlEncodedContent(dict);
-            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            var httpContent = new StringContent(z, Encoding.UTF8, "application/json");
             var resp = CallAPISendZNS(url, httpContent);
 
         }
@@ -247,14 +250,11 @@ namespace XProject.WindowForm
             public string mode { get; set; }
             public string phone { get; set; }
             public string template_id { get; set; }
-            public TemplateData template_data { get; set; }
+            public string template_data { get; set; }
             //public string tracking_id { get; set; }
         }
+       
 
-        public class TemplateData
-        {
-            public string otp { get; set; }
-        }
 
         private async void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -282,7 +282,8 @@ namespace XProject.WindowForm
                     // Iterate through its children, return property names.
                     .SelectMany(t => t.Children().OfType<JProperty>().Select(p => p.Value))
                     .ToArray();
-
+                dataGridView3.Rows.Clear();
+                dataGridView3.Refresh();
                 for (int i = 0; i < properties.Length; i++)
                 {
                     dataGridView3.Rows.Add(new object[] {
@@ -293,6 +294,48 @@ namespace XProject.WindowForm
             }    
         }
 
+<<<<<<< Updated upstream
         
+=======
+        private void button7_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            textBox7.Text = openFileDialog.FileName;
+            BindData(textBox7.Text);
+        }
+        private void BindData(string filePath)
+        {
+            DataTable dt = new DataTable();
+            string[] lines = System.IO.File.ReadAllLines(filePath);
+            if (lines.Length > 0)
+            {
+                //first line to create header
+                string firstLine = lines[0];
+                string[] headerLabels = firstLine.Split(',');
+                foreach (string headerWord in headerLabels)
+                {
+                    dt.Columns.Add(new DataColumn(headerWord));
+                }
+                //For Data
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    string[] dataWords = lines[i].Split(',');
+                    DataRow dr = dt.NewRow();
+                    int columnIndex = 0;
+                    foreach (string headerWord in headerLabels)
+                    {
+                        dr[headerWord] = dataWords[columnIndex++];
+                    }
+                    dt.Rows.Add(dr);
+                }
+            }
+            if (dt.Rows.Count > 0)
+            {
+                dataGridView4.DataSource = dt;
+            }
+
+        }
+>>>>>>> Stashed changes
     }
 }
