@@ -22,7 +22,7 @@ namespace XProject.WindowForm
         public Form1()
         {
             InitializeComponent();
-            
+
         }
         public class Data1
         {
@@ -38,67 +38,6 @@ namespace XProject.WindowForm
         public class Root
         {
             public Data1 data { get; set; }
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ZaloClient client = new ZaloClient(textBox1.Text);
-            JObject result = client.getListFollower(0, 50);
-            if (result.HasValues)
-            {
-
-                //var dt = JsonConvert.DeserializeObject<List<Data>>(result.ToString());
-                Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(result.ToString());
-                dataGridView1.DataSource = myDeserializedClass.data.followers;
-                dataGridView1.Columns["user_id"].Width = 200;
-                //dataGridView1.Columns["user_id"].DataPropertyName = "user_id";
-            }
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ZaloClient client = new ZaloClient(textBox1.Text);
-            ////JObject result = client.sendTextMessageToUserId(textBox2.Text, "this is \n a message");
-            ////JObject result = client.sendImageMessageToUserIdByUrl(textBox2.Text, "this is a message", "https://drive.google.com/drive/u/2/my-drive");
-
-            //JObject result = client.sendImageMessageToUserIdByAttachmentId(textBox2.Text, "this is a messag", "LALmECqgBZ5UfdGzoo4s8bgzOYlECJewJxnsFTqoBZL6e68ynoGkQH3kC2U9Vt5uMA9-DeynVNXBecCjXsXYFbwtQ6tJVsX_HFGrTj9zQNn5zpLvrdXgSq7tD67RVsffJF5bPTifRcePeM8qt7bgEb6jT60YVQE-RZsCEIyd");
-            ////JObject result1 = client.uploadImageForOfficialAccountAPI(new ZaloFile(label1.Text));
-            ///JObject result = client.sendRequestUserProfileToUserId(textBox2.Text, "we need more infomation", "this message is for testing", "https://stc-developers.zdn.vn/zalo.png");
-
-            JObject result = client.getProfileOfFollower(textBox2.Text);
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            //To where your opendialog box get starting location. My initial directory location is desktop.
-            openFileDialog.InitialDirectory = "C://Desktop";
-            //Your opendialog box title name.
-            openFileDialog.Title = "Select file to be upload.";
-            //which type file format you want to upload in database. just add them.
-            openFileDialog.Filter = "Select Valid Document(*.pdf; *.doc; *.xlsx; *.html;*.jpg)|*.pdf; *.docx; *.xlsx; *.html;*.jpg";
-            //FilterIndex property represents the index of the filter currently selected in the file dialog box.
-            openFileDialog.FilterIndex = 1;
-            try
-            {
-                if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    if (openFileDialog.CheckFileExists)
-                    {
-                        string path = System.IO.Path.GetFullPath(openFileDialog.FileName);
-                        label1.Text = path;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please Upload document.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -192,10 +131,10 @@ namespace XProject.WindowForm
             var template_id = textBox6.Text;
             string url = "https://business.openapi.zalo.me/template/sample-data?template_id=" + template_id;
             _resp = await CallAPIGet(url);
-            
+
 
             var root = JToken.Parse(_resp);
-            
+
             var properties = root
                 // Select nested Data object
                 .SelectTokens("data")
@@ -217,21 +156,21 @@ namespace XProject.WindowForm
                 valueproperties[i],
             });
             }
-           
+
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             string url = "https://business.openapi.zalo.me/message/template";
-            
-            string template_data="";
+
+            string template_data = "";
             for (int rows = 0; rows < dataGridView3.Rows.Count; rows++)
             {
-                    string key = dataGridView3.Rows[rows].Cells[0].Value.ToString();
-                    string value = dataGridView3.Rows[rows].Cells[1].Value.ToString();
-                     template_data = template_data+key + "\"" + ":"+"\""+value +  ",";
+                string key = dataGridView3.Rows[rows].Cells[0].Value.ToString();
+                string value = dataGridView3.Rows[rows].Cells[1].Value.ToString();
+                template_data = template_data + key + "\"" + ":" + "\"" + value + ",";
             }
-            string template_dt =template_data.TrimEnd(',');
+            string template_dt = template_data.TrimEnd(',');
 
             Root3 rootData = new Root3
             {
@@ -241,12 +180,12 @@ namespace XProject.WindowForm
                 template_data = template_dt
 
             };
-       
+
             var content = JsonConvert.SerializeObject(rootData);
             content = content + "}";
-            var a = content.LastIndexOf("template_data")+15;
-            var s = content.Insert(a,"{");
-            var z = s.Replace(@"\",@"");
+            var a = content.LastIndexOf("template_data") + 15;
+            var s = content.Insert(a, "{");
+            var z = s.Replace(@"\", @"");
 
             //var content = new FormUrlEncodedContent(dict);
             var httpContent = new StringContent(z, Encoding.UTF8, "application/json");
@@ -261,14 +200,14 @@ namespace XProject.WindowForm
             public string template_data { get; set; }
             //public string tracking_id { get; set; }
         }
-       
+
 
 
         private async void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dataGridView2.CurrentRow.Index;
             textBox6.Text = dataGridView2.Rows[index].Cells[0].Value.ToString();
-            if(textBox6.Text!=null)
+            if (textBox6.Text != null)
             {
                 var template_id = textBox6.Text;
                 string url = "https://business.openapi.zalo.me/template/sample-data?template_id=" + template_id;
@@ -299,7 +238,7 @@ namespace XProject.WindowForm
                 valueproperties[i],
             });
                 }
-            }    
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -341,5 +280,75 @@ namespace XProject.WindowForm
             }
 
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ZaloClient client = new ZaloClient(textBox1.Text);
+            int index = dataGridView1.CurrentRow.Index;
+            JObject result = client.getProfileOfFollower(dataGridView1.Rows[index].Cells[0].Value.ToString());
+            var res = JsonConvert.SerializeObject(result);
+            if (result == null)
+            {
+                return;
+            }
+            else
+            {
+                Root4 myDeserializedClass = JsonConvert.DeserializeObject<Root4>(res);
+                textBox3.ReadOnly = true;
+                textBox3.Text = dataGridView1.Rows[index].Cells[0].Value.ToString();
+                if (myDeserializedClass.data != null)
+                {
+                    textBox4.Text = myDeserializedClass.data.display_name.ToString();
+                    pictureBox1.ImageLocation = myDeserializedClass.data.Avatars["240"];
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản bị khoá hoặc không tồn tại!!!");
+
+                }
+
+            }
+
+        }
+
+
+        public class Data
+        {
+            public string avatar { get; set; }
+            public Dictionary<string, string> Avatars { get; set; }
+            public int user_gender { get; set; }
+            public string user_id { get; set; }
+            public string user_id_by_app { get; set; }
+            public string display_name { get; set; }
+            public int birth_date { get; set; }
+            public TagsAndNotesInfo tags_and_notes_info { get; set; }
+        }
+
+        public class Root4
+        {
+            public Data data { get; set; }
+        }
+
+        public class TagsAndNotesInfo
+        {
+            public List<object> notes { get; set; }
+            public List<object> tag_names { get; set; }
+        }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ZaloClient client = new ZaloClient(textBox1.Text);
+            JObject result = client.getListFollower(0, 50);
+            if (result.HasValues)
+            {
+
+                //var dt = JsonConvert.DeserializeObject<List<Data>>(result.ToString());
+                Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(result.ToString());
+                dataGridView1.DataSource = myDeserializedClass.data.followers;
+                dataGridView1.Columns["user_id"].Width = 200;
+                //dataGridView1.Columns["user_id"].DataPropertyName = "user_id";
+            }
+        }
+
+
     }
 }
